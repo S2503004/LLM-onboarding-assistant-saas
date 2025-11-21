@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  title: LLM Onboarding API
+  version: 0.1.0
+paths:
+  /api/onboard:
+    post:
+      summary: Generate onboarding plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productName: { type: string }
+                persona: { type: string }
+                goal: { type: string }
+                context: { type: string }
+      responses:
+        '200':
+          description: onboarding plan
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plan:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        title: { type: string }
+                        description: { type: string }
+                        estimatedMinutes: { type: number }
